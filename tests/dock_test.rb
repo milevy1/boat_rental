@@ -31,4 +31,16 @@ class DockTest < Minitest::Test
     assert_equal expected, @dock.rental_log
   end
 
+  def test_dock_charge_returns_hash_with_card_number_and_amount
+    @dock.rent(@kayak_1, @patrick)
+    @dock.rent(@kayak_2, @patrick)
+    @dock.rent(@sup_1, @eugene)
+    @kayak_1.add_hour
+    @kayak_1.add_hour
+    expected = { :card_number => "4242424242424242",
+                 :amount => 40 }
+
+    assert_equal expected, dock.charge(kayak_1)
+  end
+
 end
