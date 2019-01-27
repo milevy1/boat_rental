@@ -39,8 +39,16 @@ class DockTest < Minitest::Test
     @kayak_1.add_hour
     expected = { :card_number => "4242424242424242",
                  :amount => 40 }
-
     assert_equal expected, @dock.charge(@kayak_1)
+
+    @sup_1.add_hour
+    @sup_1.add_hour
+    @sup_1.add_hour
+    @sup_1.add_hour
+    @sup_1.add_hour
+    expected_2 = { :card_number => "1313131313131313",
+                   :amount => 45 }
+    assert_equal expected_2, @dock.charge(@sup_1)
   end
 
 end
