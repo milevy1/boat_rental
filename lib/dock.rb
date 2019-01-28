@@ -33,6 +33,10 @@ class Dock
     @return_log << charge(boat)
     @rental_log[boat] = nil
   end
+
+  def log_hour
+    @rental_log.each { |boat, renter| boat.add_hour }
+  end
   
   #
   # * `return` - This method takes a `Boat` object as an argument.
