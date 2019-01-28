@@ -12,7 +12,12 @@ class Dock
   end
 
   def rent(boat, renter)
-    @rental_log[boat] = renter
+    # Check boat is not currently rented
+    if !@rental_log[boat].nil?
+      puts "Error, boat is currently rented"
+    else
+      @rental_log[boat] = renter
+    end
   end
 
   def charge(boat)
